@@ -1,1 +1,1 @@
-# speech-recognition-and-voice-proccessing
+# speech-proccessing-and-voice-recognition
