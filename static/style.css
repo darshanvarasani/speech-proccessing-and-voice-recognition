@@ -1,0 +1,259 @@
+body {
+    background-image: url('./bc.png');
+    height: 87%;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #f2efe2;
+    font-size: 20px;
+    background-color: #021414;
+}
+
+.container {
+    position: relative;
+    border: 1px solid #f2efe2;
+    width: 40vw;
+    max-width: 60vw;
+    margin: 0 auto;
+    border-radius: 0.1rem;
+    background: #f2efe2;
+    padding: 0.2rem 1rem;
+    color: #1e2440;
+    overflow: auto;
+    margin-top: 10vh;
+}
+
+.text-box {
+    height: 45px;
+}
+
+.text-box:focus {
+    outline: none;
+}
+
+.text-box p {
+    border-bottom: 1px dotted black;
+    margin: 0px !important;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 85vw;
+        max-width: 85vw;
+    }
+    .text-box {
+        max-height: 55vh;
+    }
+}
+
+button {
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 1rem;
+    float: right;
+    width: 4rem;
+    height: 4rem;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+/*
+  dhaval css
+  */
+
+:root {
+    --body-bg: white;
+    --left-msg-bg: #81d4ee;
+    --right-msg-bg: #c0b5b5;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+.msger {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    width: 70%;
+    max-width: 800px;
+    margin-left: 400px;
+    margin-top: 25px;
+    height: calc(100% - 50px);
+    border: var(--border);
+    border-radius: 5px;
+    background: var(--msger-bg);
+    box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 3px 3px black;
+}
+
+.container1 {
+    width: 66%;
+    margin-top: 1%;
+    padding-top: 5%;
+    height: 77%;
+    margin-left: 17%;
+    flex: 1;
+    overflow: scroll;
+    padding: 10px;
+    scrollbar-width: 0;
+}
+
+.container1::-webkit-scrollbar {
+    width: 0;
+}
+
+.container1::-webkit-scrollbar-track {
+    visibility: hidden;
+}
+
+.container1::-webkit-scrollbar-thumb {
+    width: 0;
+}
+
+.msg {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.msg-img {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 2px 2px 2px black;
+    border-radius: 50%;
+}
+
+.msg-bubble {
+    max-width: 450px;
+    padding: 15px;
+    border-radius: 15px;
+    background: var(--left-msg-bg);
+}
+
+.msg-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.msg-info-name {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.msg-info-time {
+    font-size: 0.85em;
+}
+
+.left-msg .msg-bubble {
+    border-bottom-left-radius: 0;
+    color: black;
+    box-shadow: 2px 2px 2px black;
+}
+
+.right-msg {
+    flex-direction: row-reverse;
+}
+
+.right-msg .msg-bubble {
+    background: var(--right-msg-bg);
+    color: rgb(34, 30, 30);
+    box-shadow: 2px 2px 2px black;
+    border-bottom-right-radius: 0;
+}
+
+.right-msg .msg-img {
+    margin: 0 0 0 10px;
+}
+
+
+/*
+    mic button
+*/
+
+.object {
+    margin-top: 2.5%;
+    display: flex;
+    flex: 0 1 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+}
+
+.outline {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 8px solid #B5A4A4;
+    animation: pulse 3s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+    position: absolute;
+}
+
+.button {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #50CDDD;
+    box-shadow: 0px 0px 80px #0084F9;
+    position: absolute;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+        border: 35px solid #0B3082;
+    }
+
+    50% {
+        border: solid #A3FFC2;
+        opacity: 0.8;
+    }
+
+    90% {
+        transform: scale(1.8);
+        opacity: 0.2;
+        border: 3px solid #2E3CFF;
+    }
+
+    100% {
+        transform: scale(1.9);
+        opacity: 0;
+        border: 1px solid #7A89FF;
+    }
+}
+
+.delayed {
+    animation-delay: 1.5s;
+}
+
+#circlein {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #6BD6E1;
+    box-shadow: 0px -2px 15px #E0FF94;
+    position: absolute;
+}
+
+.mic-icon {
+    height: 40px;
+    position: absolute;
+    margin: 5px;
+}
+

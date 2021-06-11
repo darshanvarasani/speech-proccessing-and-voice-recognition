@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% block header %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    /* Table Layout */
+    table.task {
+        border-collapse: collapse;
+        border-spacing: 0;
+        overflow: scroll;
+        height: 100px;
+        background: #212121;
+        color: #fff;
+    }
+
+    table.task th,
+    table.task td {
+        text-align: center;
+    }
+
+    table.task thead {
+        line-height: 15px;
+        background: #81d4ee;
+        text-transform: uppercase;
+    }
+
+    table.task thead th {
+        color: black;
+        padding: 10px;
+        letter-spacing: 1px;
+        vertical-align: bottom;
+    }
+
+    table.task thead th:nth-child(1) {
+        width: 30%;
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    table.task thead th:nth-child(2) {
+        width: 30%;
+    }
+
+    table.task thead th:nth-child(3) {
+        width: 35%;
+    }
+
+    table.task thead th:nth-child(4) {
+        width: 15%;
+    }
+
+    table.task tbody {
+        font-size: 1em;
+        line-height: 15px;
+    }
+
+    table.task tbody tr {
+        border-top: 2px solid rgba(109, 176, 231, 0.8);
+        transition: background 0.6s, color 0.6s;
+    }
+
+    table.task tbody tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    table.task tbody tr:hover {
+        color: #000;
+        background: rgba(255, 255, 255, 0.7);
+        font-weight: 900;
+    }
+
+    table.task tbody td {
+        padding: 12px;
+    }
+
+    table.task tbody tr:hover td:first-child {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    table.task tbody td:first-child {
+        text-align: left;
+        padding-left: 20px;
+        font-weight: 700;
+        background: rgba(52, 79, 100, 0.35);
+        transition: background 0.6s;
+    }
+
+    /* header */
+    @import url(https://fonts.googleapis.com/css?family=Calligraffitti);
+
+    h1 {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        font-family: "Calligraffitti";
+        font-weight: normal;
+        font-size: 4em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        transform: translate3d(-50%, -50%, 0);
+    }
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+<br><br>
+<div
+    style="margin-left: 36%; margin-top: 6%; overflow:scroll; height:475px; width:400px; overflow-x:auto; overflow-y:auto;">
+    {% if msg %}
+    <div class="container" id="co">
+        <canvas id="c"></canvas>
+        <h1>{{msg}}</h1>
+    </div>
+    to set Reminder speak : set Reminder on (time in 12 hour format) for (your work)
+    <script>
+        (function () {
+
+            var width, height, largeContainer, canvas, ctx, circles, target, animateHeader = true;
+
+            // Main
+            initHeader();
+            addListeners();
+
+            function initHeader() {
+                width = 400;
+                height = 400;
+                target = { x: 0, y: height };
+
+                largeContainer = document.getElementById('co');
+                largeContainer.style.height = height + 'px';
+
+                canvas = document.getElementById('c');
+                canvas.width = width;
+                canvas.height = height;
+                ctx = canvas.getContext('2d');
+
+                // create particles
+                circles = [];
+                for (var x = 0; x < width * 0.5; x++) {
+                    var c = new Circle();
+                    circles.push(c);
+                }
+                animate();
+            }
+
+            animateHeader= true
+         
+            function animate() {
+                if (animateHeader) {
+                    ctx.clearRect(0, 0, width, height);
+                    for (var i in circles) {
+                        circles[i].draw();
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+
+            // Canvas manipulation
+            function Circle() {
+                var _this = this;
+
+                // constructor
+                (function () {
+                    _this.pos = {};
+                    init();
+                    console.log(_this);
+                })();
+
+                function init() {
+                    _this.pos.x = Math.random() * width;
+                    _this.pos.y = height + Math.random() * 100;
+                    _this.alpha = 0.1 + Math.random() * 0.3;
+                    _this.scale = 0.1 + Math.random() * 0.3;
+                    _this.velocity = Math.random();
+                }
+
+                this.draw = function () {
+                    if (_this.alpha <= 0) {
+                        init();
+                    }
+                    _this.pos.y -= _this.velocity;
+                    _this.alpha -= 0.0005;
+                    ctx.beginPath();
+                    ctx.arc(_this.pos.x, _this.pos.y, _this.scale * 10, 0, 2 * Math.PI, false);
+                    ctx.fillStyle = 'rgba(255,255,255,' + _this.alpha + ')';
+                    ctx.fill();
+                };
+            }
+
+        })();
+    </script>
+    {% else %}
+    <table class="task">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Reminder</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in event%}
+            <tr>
+                <td>{{e.Time}}</td>
+                <td>{{e.Reminder}}</td>
+                <td><a href="/delete_event/{{e.id}}" style="color: red"><i class="fa fa-trash fa-lg"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

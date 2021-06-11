@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+{% block header %}
+<title>Login</title>
+<style>
+    @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+    header {
+      height: 100vh;
+      opacity: 0.3;
+    }
+    
+    .login-box {
+      width: 280px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff
+    }
+    
+    .login-box h1 {
+      float: left;
+      font-size: 40px;
+    
+      margin-bottom: 40px;
+      padding: 13px 0;
+    }
+    
+    .text-box {
+      width: 100%;
+      overflow: hidden;
+      font-size: 20px;
+      padding: 8px 0;
+      margin: 8px 0;
+    
+    
+    }
+    
+    .text-box i {
+      width: 26px;
+      float: left;
+      text-align: center;
+    }
+    
+    .text-box input {
+      border: none;
+      outline: none;
+      background: none;
+      color: #fff;
+      font-size: 18px;
+      width: 80%;
+      float: left;
+      margin: 0 10px;
+    }
+    
+    .btn {
+      outline: none;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #fff;
+      padding: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    
+    hr {
+      border: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, #0c002b, #25d6ee);
+    }
+    
+    
+    .btn-box {
+      margin-top: 15px;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 40px;
+    
+    }
+    
+    .btn {
+      position: absolute;
+      width: 100%;
+      padding: 10px;
+    
+    }
+    
+    .span_1 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, #0c002b, #28fa5d);
+      animation: anim1 2s linear infinite;
+    }
+    
+    .span_2 {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, #0c002b, #28fa5d);
+      animation: anim2 2s linear infinite;
+    }
+    
+    .span_3 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to left, #0c002b, #28fa5d);
+      animation: anim3 2s linear infinite;
+    }
+    
+    .span_4 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to top, #0c002b, #28fa5d);
+      animation: anim4 2s linear infinite;
+    }
+    
+    .span_1d {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, #0c002b, #f82a2a);
+      animation: anim1 2s linear infinite;
+    }
+    
+    .span_2d {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, #0c002b, #f82a2a);
+      animation: anim2 2s linear infinite;
+    }
+    
+    .span_3d{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to left, #0c002b, #f82a2a);
+      animation: anim3 2s linear infinite;
+    }
+    
+    .span_4d {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to top, #0c002b, #f82a2a);
+      animation: anim4 2s linear infinite;
+    }
+    
+    @keyframes anim1 {
+      0% {
+        transform: translateX(-100%);
+      }
+    
+      100% {
+        transform: translateX(100%);
+      }
+    }
+    
+    @keyframes anim2 {
+      0% {
+        transform: translateY(-100%);
+      }
+    
+      100% {
+        transform: translateY(100%);
+      }
+    }
+    
+    @keyframes anim3 {
+      0% {
+        transform: translateX(100%);
+      }
+    
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    
+    @keyframes anim4 {
+      0% {
+        transform: translateY(100%);
+      }
+    
+      100% {
+        transform: translateY(-100%);
+      }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+
+<!-- Email id: <input type="text" id="email" name="email"><br>
+        Password: <input type="password" id="pass" name="pass">
+        <button type="submit">login</button> -->
+
+        <form action="/login" class="login-box" method="POST">
+          <div class="text-box">
+              <i class="fa fa-envelope"></i>
+              <input type="text" id="emailid" name="email" placeholder="E-mail" required>
+          </div>
+          <hr>
+          <div class="text-box">
+              <i class="fa fa-lock"></i>
+              <input type="password" id="pass" name="pass" required placeholder="Password">
+          </div>
+          <hr>
+      
+          <br>
+          <div class="btn-box">
+              <button type="submit" class="btn">Log in</button>
+              <span class="span_1"></span>
+              <span class="span_2"></span>
+              <span class="span_3"></span>
+              <span class="span_4"></span>
+          </div><br>
+          Not registered ? &nbsp;&nbsp;<a style="color: #25d6ee" href="/register"> Sign up</a>
+      </form>
+      
+{% if error_msg %}
+<script>
+  toastr.error('Invalid Email-id or Password ');
+</script>
+{% endif %}
+{% if logout %}
+<script>
+  toastr.info('Logout Successfully.');
+</script>
+{% endif %}
+{% endblock%}
